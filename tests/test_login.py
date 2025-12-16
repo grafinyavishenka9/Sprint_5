@@ -4,7 +4,7 @@ from credentials import Credentials
 from locators import Locators
 from url import *
 import time
-class TestSuccessLoginByButtonOnMainPage:
+class TestLogin:
 
     def test_success_login_by_button_on_main_page(self, driver_login):
         driver_login.find_element(*Locators.ENTER_TO_ACCOUNT_MAIN_PAGE).click()
@@ -15,8 +15,6 @@ class TestSuccessLoginByButtonOnMainPage:
         assert 'Оформить заказ' == reg_text
         assert driver_login.current_url == main_site
 
-class TestSuccessLoginByButtonLK:
-
     def test_success_login_by_button_lk(self, driver_login):
         driver_login.find_element(*Locators.ENTER_TO_ACCOUNT_LK).click()
         driver_login.find_element(*Locators.LOGIN_EMAIL).send_keys(Credentials.EMAIL)
@@ -25,8 +23,6 @@ class TestSuccessLoginByButtonLK:
         reg_text = WebDriverWait(driver_login, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(Locators.LOGIN_SUCCESS_VERIFY_ELEMENT)).text
         assert 'Оформить заказ' == reg_text
         assert driver_login.current_url == main_site
-
-class TestSuccessLoginByButtonZareg:
 
     def test_success_login_by_button_zareg(self, driver_login):
         driver_login.find_element(*Locators.ENTER_TO_ACCOUNT_LK).click()
@@ -38,8 +34,6 @@ class TestSuccessLoginByButtonZareg:
         reg_text = WebDriverWait(driver_login, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(Locators.LOGIN_SUCCESS_VERIFY_ELEMENT)).text
         assert 'Оформить заказ' == reg_text
         assert driver_login.current_url == main_site
-
-class TestSuccessLoginByRestorePasswordPage:
 
     def test_success_login_by_restore_password_page(self, driver_login):
         driver_login.find_element(*Locators.ENTER_TO_ACCOUNT_MAIN_PAGE).click()

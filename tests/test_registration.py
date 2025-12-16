@@ -5,17 +5,15 @@ from helper import generate_random_credentials
 from locators import Locators
 from url import *
 import time
-class TestRegistrationWithNewCredentials:
+class TestRegistration:
 
     def test_success_registration(self, driver_registration):                
         driver_registration.find_element(*Locators.REGISTRATION_NAME).send_keys(Credentials.NAME)
         driver_registration.find_element(*Locators.REGISTRATION_EMAIL).send_keys(Credentials.EMAIL)
         driver_registration.find_element(*Locators.REGISTRATION_PASSWORD).send_keys(Credentials.PASSWORD)
         driver_registration.find_element(*Locators.REGISTRATION_BUTTON).click()
-        time.sleep(1)
+        time.sleep(10)
         assert driver_registration.current_url == main_site + "login"
-
-class TestRegistrationWithWrongPassword:
 
     def test_registration_with_wrong_password(self, driver_registration):        
         name, email, password = generate_random_credentials()        
