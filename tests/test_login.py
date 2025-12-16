@@ -3,7 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from credentials import Credentials
 from locators import Locators
 from url import *
-import time
+
+
 class TestLogin:
 
     def test_success_login_by_button_on_main_page(self, driver_login):

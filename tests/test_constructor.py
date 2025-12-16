@@ -6,6 +6,7 @@ from url import *
 import time
 import pytest
 
+
 class TestConstructor:
 
     @pytest.mark.parametrize(

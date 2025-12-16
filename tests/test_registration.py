@@ -5,6 +5,8 @@ from helper import generate_random_credentials
 from locators import Locators
 from url import *
 import time
+
+
 class TestRegistration:
 
     def test_success_registration(self, driver_registration):                
