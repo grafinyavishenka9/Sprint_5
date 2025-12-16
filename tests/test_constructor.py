@@ -3,7 +3,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from credentials import Credentials
 from locators import Locators
 from url import *
-import time
 import pytest
 
 
@@ -22,7 +21,6 @@ class TestConstructor:
     def test_constructor(self, driver_login, locators_start, locators_end, locators_verify, ingridient):
         driver_login.find_element(*locators_start).click()
         driver_login.find_element(*locators_end).click()
-        time.sleep(3)
         reg_text = WebDriverWait(driver_login, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(locators_end)).text
         is_active = WebDriverWait(driver_login, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(locators_verify)).get_attribute("class")
         assert ingridient == reg_text

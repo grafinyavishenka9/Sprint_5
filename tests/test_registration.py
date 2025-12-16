@@ -4,7 +4,6 @@ from credentials import Credentials
 from helper import generate_random_credentials
 from locators import Locators
 from url import *
-import time
 
 
 class TestRegistration:
@@ -14,7 +13,7 @@ class TestRegistration:
         driver_registration.find_element(*Locators.REGISTRATION_EMAIL).send_keys(Credentials.EMAIL)
         driver_registration.find_element(*Locators.REGISTRATION_PASSWORD).send_keys(Credentials.PASSWORD)
         driver_registration.find_element(*Locators.REGISTRATION_BUTTON).click()
-        time.sleep(10)
+        WebDriverWait(driver_registration, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(Locators.REGISTRATION_VERIFY))
         assert driver_registration.current_url == main_site + "login"
 
     def test_registration_with_wrong_password(self, driver_registration):        

@@ -8,6 +8,7 @@ class Locators:
     REGISTRATION_EMAIL = (By.XPATH, '//label[text()="Email"]/following-sibling::input')#поле "Email" на странице регистрации
     REGISTRATION_PASSWORD = (By.XPATH, '//label[text()="Пароль"]/following-sibling::input')#поле "Пароль" на странице регистрации
     REGISTRATION_BUTTON = (By.XPATH, '//button[text()="Зарегистрироваться"]')#кнопка "Зарегистрироваться" на странице регистрации
+    REGISTRATION_VERIFY = (By.XPATH,'//button[text()="Войти"]')#кнопка "Войти" используется для верификации регистрации
     REGISTRATION_WRONG_PASSWORD_ERROR = (By.XPATH, '//p[text()="Некорректный пароль"]')#тект ошибки при вводе некорректного пароля на странице регистрации
     
     #Локаторы для логина

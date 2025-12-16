@@ -3,7 +3,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from credentials import Credentials
 from locators import Locators
 from url import *
-import time
 
 
 class TestLK:
@@ -28,9 +27,8 @@ class TestLK:
 
     def test_exit_from_lk(self, driver_with_login):
         driver_with_login.find_element(*Locators.ENTER_TO_LK_BUTTON).click()
-        time.sleep(1)
+        WebDriverWait(driver_with_login, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(Locators.EXIT_FROM_LK))
         driver_with_login.find_element(*Locators.EXIT_FROM_LK).click()
-        time.sleep(1)
         reg_text = WebDriverWait(driver_with_login, 10, poll_frequency=0.1).until(EC.visibility_of_element_located(Locators.EXIT_FROM_LK_VERIFY)).text
         assert 'Вход' == reg_text
         assert driver_with_login.current_url == main_site + 'login'
